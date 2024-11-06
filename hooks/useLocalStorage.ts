@@ -13,8 +13,7 @@ export const useLocalStorage = <T>(
         return initialValue;
       }
       return parsedItem;
-    } catch (error) {
-      console.error(error);
+    } catch {
       return initialValue;
     }
   });
@@ -23,9 +22,7 @@ export const useLocalStorage = <T>(
     try {
       setStoredValue(value);
       window.localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error(error);
-    }
+    } catch {}
   };
 
   return [storedValue, setValue];
