@@ -57,7 +57,6 @@ export default function Home() {
       if (!Array.isArray(value)) return false;
       if (
         value.some((task) => {
-          console.log(new Date(task.time).toLocaleDateString(), todayString);
           return (
             typeof task.id !== 'string' ||
             typeof task.text !== 'string' ||
@@ -153,10 +152,6 @@ export default function Home() {
       updatedTasks[todayIndex].count += newCompleted ? 1 : -1;
     } else {
       updatedTasks.push({ date: today, count: 1 });
-    }
-
-    if (updatedTasks[todayIndex].count < 0) {
-      updatedTasks[todayIndex].count = 0;
     }
 
     setCompletedTasks(updatedTasks);
