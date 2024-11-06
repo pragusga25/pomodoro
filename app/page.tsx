@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { Timer } from '@/components/pomodoro/timer';
@@ -10,6 +10,7 @@ import { TaskList } from '@/components/pomodoro/task-list';
 import { TaskChart } from '@/components/pomodoro/task-chart';
 import { CollapsibleCard } from '@/components/pomodoro/collapsible-card';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import Link from 'next/link';
 
 const nanoId = (length = 4) => {
   let id = '';
@@ -177,17 +178,27 @@ export default function Home() {
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-primary">Pomodoro Focus</h1>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          >
-            {theme === 'dark' ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
-          </Button>
+          <div className="flex items-center space-x-6">
+            <Link
+              href="https://github.com/pragusga25/pomodoro"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-5 w-5 text-orange-400" />
+            </Link>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8">
